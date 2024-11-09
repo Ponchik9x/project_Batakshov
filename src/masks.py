@@ -6,7 +6,7 @@ def get_mask_card_number(card_num: str) -> str:
 
 def get_mask_account(card_num: str) -> str:
     """ "Функция заменяет все цифры символом '*' и возвращает последние 4 цифры"""
-    return f"**{card_num[-4:]}"
+    return f" **{card_num[-4:]}"
 
 
 if __name__ == "__main__":
