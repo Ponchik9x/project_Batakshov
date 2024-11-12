@@ -17,7 +17,7 @@ def mask_account_card(card_name: str) -> str:
         return "неверное значение"
 
 
-def get_date() -> str:
+def get_date(datatime: datetime) -> str:
     """Функция возвращает строку с датой в формате "ДД.ММ.ГГГГ"("11.03.2024")."""
     current_time = datetime.now()
     formated_date = current_time.strftime("%d.%m.%Y")
