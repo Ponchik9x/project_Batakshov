@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_name: str) -> str:
@@ -27,4 +27,4 @@ if __name__ == "__main__":
     print(mask_account_card(account_number_one))
     account_number_two = "Счет 64686473678894779589"
     print(mask_account_card(account_number_two))
-    print(get_date())
+    print(get_date(datetime.now()))

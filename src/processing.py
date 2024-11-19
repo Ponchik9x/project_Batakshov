@@ -1,5 +1,5 @@
 def filter_by_state(state_dict: list[dict[str, object]], state: str = "EXECUTED") -> list[dict[str, object]]:
-    """Функция принимает список словарей и со значением ключа "state" = EXECUTED
+    """Функция принимает список словарей и значение ключа "state" = EXECUTED
     Функция возвращает новый список словарей, у которых ключ "state" соответствует указанному значению."""
     new_dict = []
     for dict_ in state_dict:
