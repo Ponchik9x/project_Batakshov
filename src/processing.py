@@ -1,6 +1,5 @@
 def filter_by_state(state_dict: list[dict[str, object]], state: str = "EXECUTED") -> list[dict[str, object]]:
-    """Функция принимает список словарей и значение ключа "state" = EXECUTED
-    Функция возвращает новый список словарей, у которых ключ "state" соответствует указанному значению."""
+    """Функция возвращает список словарей по значению ключа "state" = EXECUTED"""
     new_dict = []
     for dict_ in state_dict:
         if dict_["state"] == state:
@@ -9,7 +8,7 @@ def filter_by_state(state_dict: list[dict[str, object]], state: str = "EXECUTED"
 
 
 def sort_by_date(users_dict: list, reverse_list_dict: bool = True) -> list:
-    """Функция сортирует список словарей, по умолчаиию второй аргумент True(сортировка по убыванию)"""
+    """Функция сортирует список словарей по убыванию (reverse_list_dict = True)"""
     sort_by_date_dict = sorted(users_dict, key=lambda item: item["date"], reverse=reverse_list_dict)
     return sort_by_date_dict
 
@@ -22,5 +21,4 @@ if __name__ == "__main__":
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
     ]
     print(filter_by_state(my_dict))
-    print("ok")
     print(sort_by_date(my_dict))
