@@ -20,11 +20,3 @@ def get_date(datatime: datetime) -> str:
     current_time = datetime.now()
     formated_date = current_time.strftime("%d.%m.%Y")
     return formated_date
-
-
-if __name__ == "__main__":
-    account_number_one = "Visa Classic 6831982476737658"
-    print(mask_account_card(account_number_one))
-    account_number_two = "Счет 64686473678894779589"
-    print(mask_account_card(account_number_two))
-    print(get_date(datetime.now()))
