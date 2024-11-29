@@ -8,11 +8,11 @@ def mask_account_card(card_name: str) -> str:
     type_of_card = card_name.rpartition(" ")[0]
     card_number = card_name.rpartition(" ")[-1]
     if len(card_number) > 16:
-        return f"{type_of_card}{get_mask_account(card_number)}"
+        return f"{type_of_card} {get_mask_account(card_number)}"
     elif len(card_number) == 16:
-        return f"{type_of_card}{get_mask_card_number(card_number)}"
+        return f"{type_of_card} {get_mask_card_number(card_number)}"
     else:
-        return "неверное значение"
+        raise ValueError("неверное значение")
 
 
 def get_date(datatime: datetime) -> str:
