@@ -8,7 +8,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 data = "^0.4"
-pytest = "^8.3.3"
 
 
 [tool.poetry.group.lint.dependencies]
@@ -16,12 +15,6 @@ flake8 = "^7.1.1"
 black = "^24.10.0"
 mypy = "^1.13.0"
 isort = "^5.13.2"
-
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.3"
-pytest-cov = "^6.0.0"
-
 
 [build-system]
 requires = ["poetry-core"]
