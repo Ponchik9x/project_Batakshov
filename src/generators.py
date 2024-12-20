@@ -19,8 +19,9 @@ def transaction_descriptions(list_of_transactions):
     """Функция transaction_descriptions принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
     if len(list_of_transactions)==0:
         raise ValueError("Проверьте данные на входе")
-    string_descriptions = (item["description"] for item in list_of_transactions)
-    return string_descriptions
+    for item in list_of_transactions:
+        string_descriptions = (item["description"] )
+        yield string_descriptions
 
 
 def card_number_generator(start, stop):
@@ -33,7 +34,6 @@ def card_number_generator(start, stop):
     elif start >= stop:
         raise ValueError("начальное значение больше или равно конечного")
     else:
-        card_num_split=""
         for n in range(start, stop):
             zero_for_card = 16 - len(str(n))
             card_num = "0" * zero_for_card + str(n)
