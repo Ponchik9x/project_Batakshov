@@ -72,10 +72,10 @@ def test_transaction_zero_transactions_descriptions() -> None:
 
 def test_card_number_generator():
     """Тест card_number_generator() на правильность"""
-    generator = card_number_generator(1,4)
-    assert next(generator) == '0000 0000 0000 0001'
-    assert next(generator) == '0000 0000 0000 0002'
-    assert next(generator) == '0000 0000 0000 0003'
+    generator = card_number_generator(1, 4)
+    assert next(generator) == "0000 0000 0000 0001"
+    assert next(generator) == "0000 0000 0000 0002"
+    assert next(generator) == "0000 0000 0000 0003"
 
 
 def test_card_number_generator_invalid_stop():
