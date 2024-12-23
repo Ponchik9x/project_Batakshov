@@ -1,10 +1,10 @@
 import pytest
 
 from examples import transactions
-from src.generators import filter_by_currency, transaction_descriptions
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 
-def test_filter_by_currency()-> None:
+def test_filter_by_currency() -> None:
     """Тест filter_by_currency() на правильность"""
     generator = filter_by_currency(transactions, "USD")
     assert next(generator) == {
@@ -36,25 +36,25 @@ def test_filter_by_currency()-> None:
     }
 
 
-def test_filter_by_currency_zero_list()-> None:
+def test_filter_by_currency_zero_list() -> None:
     """Тест filter_by_currency() на отсутствие листа транзакций"""
     with pytest.raises(ValueError):
         filter_by_currency([], "USD")
 
 
-def test_filter_by_zero_currency()-> None:
+def test_filter_by_zero_currency() -> None:
     """Тест filter_by_currency() на отсутствие ввода валюты"""
     with pytest.raises(ValueError):
         filter_by_currency(transactions, "")
 
 
-def test_filter_by_invalid_currency()-> None:
+def test_filter_by_invalid_currency() -> None:
     """Тест filter_by_currency() на правильность ввода валюты"""
     with pytest.raises(ValueError):
         filter_by_currency(transactions, "wer")
 
 
-def test_transaction_descriptions()-> None:
+def test_transaction_descriptions() -> None:
     """Тест transaction_descriptions()  на правильность работы функции вывода описания"""
     descriptions = transaction_descriptions(transactions)
     assert next(descriptions) == "Перевод организации"
@@ -64,13 +64,33 @@ def test_transaction_descriptions()-> None:
     assert next(descriptions) == "Перевод организации"
 
 
-def test_transaction_zero_transactions_descriptions()-> None:
+def test_transaction_zero_transactions_descriptions() -> None:
     """Тест transaction_descriptions() на отсутствие списка транзакций"""
     with pytest.raises(ValueError):
         transaction_descriptions([])
 
 
-
 def test_card_number_generator():
-    """card_number_generator()"""
-    pass
+    """Тест card_number_generator() на правильность"""
+    generator = card_number_generator(1,4)
+    assert next(generator) == '0000 0000 0000 0001'
+    assert next(generator) == '0000 0000 0000 0002'
+    assert next(generator) == '0000 0000 0000 0003'
+
+
+def test_card_number_generator_invalid_stop():
+    """Тест card_number_generator() некорректный предел функции больше возможного"""
+    with pytest.raises(ValueError):
+        card_number_generator(1, 100000000000000021)
+
+
+def test_card_number_generator_zero_stop():
+    """Тест card_number_generator() некорректный предел функции меньше возможного"""
+    with pytest.raises(ValueError):
+        card_number_generator(1, 0)
+
+
+def test_card_number_generator_invalid_start_below_stop():
+    """Тест card_number_generator() некорректный предел функции старт больше стопа"""
+    with pytest.raises(ValueError):
+        card_number_generator(100000000000000021, 10)
