@@ -70,7 +70,7 @@ def test_transaction_zero_transactions_descriptions() -> None:
         list(transaction_descriptions([]))
 
 
-def test_card_number_generator():
+def test_card_number_generator() -> None:
     """Тест card_number_generator() на правильность"""
     generator = card_number_generator(1, 4)
     assert next(generator) == "0000 0000 0000 0001"
@@ -78,19 +78,19 @@ def test_card_number_generator():
     assert next(generator) == "0000 0000 0000 0003"
 
 
-def test_card_number_generator_invalid_stop():
+def test_card_number_generator_invalid_stop() -> None:
     """Тест card_number_generator() некорректный предел функции больше возможного"""
     with pytest.raises(ValueError):
         list(card_number_generator(1, 100000000000000021))
 
 
-def test_card_number_generator_zero_stop():
+def test_card_number_generator_zero_stop() -> None:
     """Тест card_number_generator() некорректный предел функции меньше возможного"""
     with pytest.raises(ValueError):
         list(card_number_generator(1, 0))
 
 
-def test_card_number_generator_invalid_start_below_stop():
+def test_card_number_generator_invalid_start_below_stop() -> None:
     """Тест card_number_generator() некорректный предел функции старт больше стопа"""
     with pytest.raises(ValueError):
         list(card_number_generator(100000000000000021, 10))
