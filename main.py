@@ -1,7 +1,13 @@
 from datetime import datetime
 
-from examples import (account_card_number, account_card_number_invalid, account_number_score,
-                      account_number_score_invalid, my_dict, transactions)
+from examples import (
+    account_card_number,
+    account_card_number_invalid,
+    account_number_score,
+    account_number_score_invalid,
+    my_dict,
+    transactions,
+)
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
