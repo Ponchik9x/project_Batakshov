@@ -1,7 +1,7 @@
 import pytest
 
 from examples import transactions
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency() -> None:
@@ -67,7 +67,7 @@ def test_transaction_descriptions() -> None:
 def test_transaction_zero_transactions_descriptions() -> None:
     """Тест transaction_descriptions() на отсутствие списка транзакций"""
     with pytest.raises(ValueError):
-        transaction_descriptions([])
+        list(transaction_descriptions([]))
 
 
 def test_card_number_generator():
@@ -81,16 +81,16 @@ def test_card_number_generator():
 def test_card_number_generator_invalid_stop():
     """Тест card_number_generator() некорректный предел функции больше возможного"""
     with pytest.raises(ValueError):
-        card_number_generator(1, 100000000000000021)
+        list(card_number_generator(1, 100000000000000021))
 
 
 def test_card_number_generator_zero_stop():
     """Тест card_number_generator() некорректный предел функции меньше возможного"""
     with pytest.raises(ValueError):
-        card_number_generator(1, 0)
+        list(card_number_generator(1, 0))
 
 
 def test_card_number_generator_invalid_start_below_stop():
     """Тест card_number_generator() некорректный предел функции старт больше стопа"""
     with pytest.raises(ValueError):
-        card_number_generator(100000000000000021, 10)
+        list(card_number_generator(100000000000000021, 10))
