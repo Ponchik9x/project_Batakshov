@@ -16,3 +16,5 @@ my_function error: can only concatenate str (not "int") to str. Inputs: ('d', 5)
 my_function error: can only concatenate str (not "int") to str. Inputs: ('d', 5), {}
 my_function ok
 add ok
+my_function ok
+add ok
