@@ -7,3 +7,12 @@ add ok
 my_function ok
 add ok
 my_function ok
+my_function ok
+mask_account_card ok
+mask_account_card ok
+get_date ok
+my_function error: can only concatenate str (not "int") to str. Inputs: ('d', 5), {}
+my_function error: can only concatenate str (not "int") to str. Inputs: ('d', 5), {}
+my_function error: can only concatenate str (not "int") to str. Inputs: ('d', 5), {}
+my_function ok
+add ok
