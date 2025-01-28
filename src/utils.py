@@ -1,8 +1,8 @@
 import json
-import os
+from json import JSONDecodeError
 from typing import Any
 
-from src.external_api import getting_converted_currency
+from external_api import getting_converted_currency
 
 
 def financial_transactions(gate_to_transaction: str) -> list[dict[Any, Any] | dict[Any, Any]] | list:
@@ -11,14 +11,18 @@ def financial_transactions(gate_to_transaction: str) -> list[dict[Any, Any] | di
     Если файл пустой, содержит не список или не найден,
     функция возвращает пустой список.
     """
-    if os.path.isfile(gate_to_transaction):
+    try:
         with open(f"{gate_to_transaction}") as file:
-            content = json.load(file)
-            if len(content) > 0 or tuple(content) == list:
-                return content
-            else:
+
+            try:
+                content = json.load(file)
+                if len(content) > 0 or tuple(content) == list:
+                    return content
+
+            except JSONDecodeError:
                 return []
-    else:
+
+    except FileNotFoundError:
         return []
 
 
@@ -33,4 +37,4 @@ def transaction_amount_dict(dict_of_transactions: dict) -> list[dict[Any, Any]] 
     if type_currency == "RUB":
         return amount
     else:
-        return getting_converted_currency(type_currency, amount)
+        return getting_converted_currency(dict_of_transactions)
