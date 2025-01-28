@@ -34,4 +34,3 @@ def transaction_amount_dict(dict_of_transactions: dict) -> list[dict[Any, Any]] 
         return amount
     else:
         return getting_converted_currency(type_currency, amount)
-
