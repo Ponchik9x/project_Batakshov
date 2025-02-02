@@ -61,3 +61,4 @@ def transaction_amount_dict(dict_of_transactions: dict) -> list[dict[Any, Any]] 
     except ValueError:
         logger.error(f"Неверное значения или словарь не существует: {dict_of_transactions}")
         print("Проверьте входящее значение")
+        return []
